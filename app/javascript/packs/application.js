@@ -27,3 +27,4 @@ import '../stylesheets/application.scss';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
 });
+import "../css/application.css"
