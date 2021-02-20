@@ -224,7 +224,6 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   dotenv-rails
-  font-awesome-sass
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
