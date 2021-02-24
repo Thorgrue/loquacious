@@ -5,6 +5,15 @@ class WordsController < ApplicationController
     @words = Word.all
   end
 
+  def calendar
+    params[:date].size == 2 ? date = params[:date] : date = "0#{params[:date]}"
+    month = params[:month].to_i + 1
+    year = 2021
+    formated_date = "#{year}-#{month}-#{date}"
+    @word = Word.find_by(day: formated_date)
+    redirect_to word_path(@word)
+  end
+
   def show
     @words = Word.all
     @word = Word.find(params[:id])
