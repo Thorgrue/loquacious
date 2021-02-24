@@ -2,38 +2,58 @@
   <div class="bg-cover" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.7) 100%), url(<%= @word.url %>);  height: 75vh;">
     <div class="flex flex-wrap content-center h-full">
 
-      <!-- Flèche gauche -->
-      <div class="z-50 -mx-10 flex flex-wrap content-center h-full">
-        <% unless @word == @words.first %>
-          <div class="text-5xl text-center flex">
-            <span><%= link_to "◀︎", word_path(@previous_word) %></span>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="z-0 mx-auto flex flex-wrap content-center h-full w-4/6">
-
-        <!-- Word -->
-        <div class="w-full flex items-center flex-wrap"><h1 class="font-title-play text-3xl"><%= @word.name %></h1>
-          <h3 class="font-title-play text-xl -mb-2">, <%= @word.cat %> :</h3>
+        <!-- Flèche gauche -->
+        <div class="z-50 -mx-10 flex flex-wrap content-center h-full">
+          <% unless @word == @words.first %>
+            <div class="text-5xl text-center flex">
+              <span><%= link_to "◀︎", word_path(@previous_word) %></span>
+            </div>
+          <% end %>
         </div>
 
-        <!-- Définition -->
-        <div class="px-10 font-body-philo text-xl text-justify">
-          <p class="py-3"><%= @word.origin %></p>
-          <p class="py-3"><%= @word.definition %></p>
+      <% unless @today.id < @word.id %>
+
+        <div class="z-0 mx-auto flex flex-wrap content-center h-full w-4/6">
+
+          <!-- Word -->
+          <div class="w-full flex items-center flex-wrap"><h1 class="font-title-play text-3xl"><%= @word.name %></h1>
+            <h3 class="font-title-play text-xl -mb-2">, <%= @word.cat %> :</h3>
+          </div>
+
+          <!-- Définition -->
+          <div class="px-10 font-body-philo text-xl text-justify">
+            <p class="py-3"><%= @word.definition %></p>
+            <p class="py-3 italic">« <%= @word.example %> »</p>
+          </div>
+
         </div>
 
-      </div>
+        <!-- Flèche droite -->
+        <div class="z-50 -mx-10 flex flex-wrap content-center h-full">
+          <% unless @word == @today %>
+            <div class="text-5xl">
+              <div><%= link_to "▶︎", word_path(@next_word) %></div>
+            </div>
+          <% end %>
+        </div>
 
-      <!-- Flèche droite -->
-      <div class="z-50 -mx-10 flex flex-wrap content-center h-full">
-        <% unless @word == @words.last %>
-          <div class="text-5xl">
-            <div><%= link_to "▶︎", word_path(@next_word) %></div>
+      <% else %>
+
+        <div class="z-0 mx-auto flex flex-wrap content-center h-full w-4/6">
+
+          <!-- Word -->
+          <div class="w-full flex items-center flex-wrap"><h1 class="font-title-play text-3xl">Oh eh !</h1>
           </div>
-        <% end %>
-      </div>
+
+          <!-- Définition -->
+          <div class="px-10 font-body-philo text-xl text-justify">
+            <p class="py-3">Tu es en avance ! Tu aimerais connaître le mot de demain ? Il va te falloir attendre encore un peu ! Pas grand chose, c'est une question d'heures, un peu de patience !</p>
+            <p class="py-3 italic">Reviens demain petit•e fripon•ne.</p>
+          </div>
+
+        </div>
+
+      <% end %>
 
      </div>
   </div>
