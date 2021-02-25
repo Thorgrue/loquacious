@@ -11,10 +11,10 @@
 
     <!-- Flèche gauche -->
     <div class="flex flex-wrap content-center h-full">
-      <div class="z-50 -mx-10 flex flex-wrap content-center h-full">
+      <div class="z-50 lg:-mx-10 pl-1 mt-6 flex flex-wrap content-end lg:content-center h-full">
         <button
           type="button"
-          class="text-5xl text-center flex"
+          class="text-xl lg:text-5xl text-center flex"
           :class="{'cursor-not-allowed opacity-25': month == 0 }"
           :disabled="month == 0 ? true : false"
           @click="month--; getNoOfDays()">
@@ -25,16 +25,16 @@
 
 
     <!-- Actual calendar -->
-    <div class="z-0 container mx-auto w-2/3">
+    <div class="z-0 container mx-auto w-11/12 lg:w-2/3">
 
 
       <!-- Name of days -->
-      <div class="flex flex-wrap pt-2 pb-2 font-title-play">
+      <div class="grid flex flex-wrap justify-around py-2 font-title-play">
         <template x-for="(day, index) in DAYS" :key="index">
-          <div style="width: 14.26%">
+          <div style="width: 13.08%">
             <div
               x-text="day"
-              class="text-black text-xl uppercase tracking-wide font-bold text-center"></div>
+              class="text-black text-sm lg:text-xl px-1 uppercase tracking-wide font-bold text-center"></div>
           </div>
         </template>
       </div>
@@ -43,17 +43,17 @@
       <div class="flex flex-wrap text-2xl text-center font-body-philo">
         <template x-for="blankday in blankdays">
           <div
-            style="width: 13.28%; height: 10.5vh"
-            class="text-center mx-1 mt-1"></div>
+            style="width: 13.08%; height: 10.5vh"
+            class="text-center mx-0.5 mt-0.5 my-1 lg:mx-1 lg:mt-1"></div>
         </template>
         <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
           <div
-            style="width: 13.28%; height: 10.5vh"
-            class="m-1 bg-white relative flex items-center justify-center">
+            style="width: 13.08%; height: 10.5vh"
+            class="m-0.5 my-0.5 lg:m-1 bg-white relative flex items-center justify-center">
             <div
               x-text="date"
               x-on:click="redirect(date, month)"
-              class="inline-flex py-1 px-8 items-center justify-center cursor-pointer text-center leading-none transition ease-in-out duration-100"
+              class="inline-flex py-1 px-2 lg:px-8 items-center justify-center cursor-pointer text-center leading-none transition ease-in-out duration-100"
               :class="{'bg-black text-white': isToday(date) == true, 'text-black hover:bg-gray-200': isToday(date) == false }"
             ></div>
           </div>
@@ -63,18 +63,18 @@
 
 
         <!-- Flèche droite -->
-      <div class="z-50 -mx-10 flex flex-wrap content-center h-full">
+      <div class="z-50 lg:-mx-10 pr-1 mt-3 flex flex-wrap content-end lg:content-center h-full">
         <button
           type="button"
-          class="text-5xl text-center flex"
+          class="text-xl lg:text-5xl text-center flex"
           :class="{'cursor-not-allowed opacity-25': month == 11 }"
           :disabled="month == 11 ? true : false"
           @click="month++; getNoOfDays()">
-          <span>▶︎</span>
+          <span>→</span>
         </button>
       </div>
 
-      <div class="z-50 bottom-0 absolute -mb-4 flex w-full justify-center">
+      <div class="z-40 bottom-0 absolute -mb-4 flex w-full justify-center">
     <div class="text-4xl font-title-play text-center pt-1">
       <span x-text="MONTH_NAMES[month]" class=""></span>
       <span x-text="year" class=""></span>
@@ -87,7 +87,7 @@
 
 
   <script>
-    const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     function app() {

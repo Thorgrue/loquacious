@@ -7,6 +7,9 @@ module.exports = {
        'title-play': ['"Playfair Display SC"', 'serif'],
        'body-philo': ['Philosopher', 'sans-serif']
       },
+      margin: {
+       '0.5': '0.125rem',
+      }
     },
   },
   variants: {
