@@ -70,7 +70,7 @@
           :class="{'cursor-not-allowed opacity-25': month == 11 }"
           :disabled="month == 11 ? true : false"
           @click="month++; getNoOfDays()">
-          <span>→</span>
+          <span>▶︎</span>
         </button>
       </div>
 
@@ -87,8 +87,8 @@
 
 
   <script>
-    MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    MONTH_NAMES = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+    const DAYS = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
 
     function app() {
       return {
@@ -96,7 +96,7 @@
         year: '',
         no_of_days: [],
         blankdays: [],
-        days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        days: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
 
         events: [
         ],

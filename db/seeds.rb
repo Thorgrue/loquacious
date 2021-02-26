@@ -45,7 +45,7 @@ puts 'Callipyge, gadru, vespéral, quintessence, mirliflore...'
 
 puts 'Lampadophore, haptique, pabullophobie, lénifier, faribole ...'
   lampadophore = Word.create(name: 'Lampadophore', cat: 'adj.', day: '2021-02-26',
-                      definition: "Rôle qui peut être décisif dans certaines situation, la personne lampadophore pouvait donnait le signal de départ d\'une course ou d\'un sport. De façon plus globale, lampadophore désigne être porteur·se de flambeau.",
+                      definition: "Rôle qui peut être décisif dans certaines situation, la personne lampadophore pouvait donner le signal de départ d\'une course ou d\'un sport. De façon plus globale, lampadophore désigne être porteur·se de flambeau.",
                       example: "Bon, pour la suite du rituel, il faut un cercle de chamans lampadophore, mettez-vous autour du pentacle.",
                       url: urls[5])
 
@@ -60,8 +60,8 @@ puts 'Lampadophore, haptique, pabullophobie, lénifier, faribole ...'
                     url: urls[7])
 
   lénifier = Word.create(name: 'Lénifier', cat: 'vb.', day: '2021-03-01',
-                    definition: "Ce verbe transitif vient du \"lénitif\" un médicament utilisé pour apaiser un patient. Maintenant, lénifier est utilisé pour signifier calmer, adoucir, apaiser une peine. Attention, lénifier peut également signifier amollir quelqu'un.",
-                    example: "T'es malade ? Une demi-douzaine de cookies pour te lénifier ?",
+                    definition: "Ce verbe transitif vient du \"lénitif\", un médicament utilisé pour apaiser un patient. Maintenant, lénifier est utilisé pour signifier calmer, adoucir, apaiser une peine. Attention, lénifier peut également signifier amollir quelqu'un.",
+                    example: "Tu es malade ? Est-ce qu'une demi-douzaine de cookies pourrait te lénifier ?",
                     url: urls[8])
 
   faribole = Word.create(name: 'Faribole', cat: 'n.f.', day: '2021-03-02',
