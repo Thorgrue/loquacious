@@ -22,7 +22,7 @@
       <ul class="overflow-auto h-40 pl-5 w-full">
         <% unless params[:query].present? && @words.count == 0 %>
           <% @words.each do |word| %>
-            <li class="font-body-philo italic text-gray-800 text-lg">• <%= link_to word.name , word_path(word) %></li>
+            <li class="font-body-philo text-gray-800 text-lg">• <%= link_to word.name , word_path(word) %></li>
           <% end %>
         <% else %>
             <li class="font-body-philo italic text-gray-800 text-lg">Oups, aucun mot ne correspond à ta requête !</li>

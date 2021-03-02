@@ -1,5 +1,5 @@
 class WordsController < ApplicationController
-  before_action :set_today, only: [:index, :show]
+  before_action :set_today, only: [:index, :calendar, :show]
 
   def index
     @words = Word.all
