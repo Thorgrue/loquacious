@@ -11,7 +11,7 @@
         <%= text_field_tag :query,
           params[:query],
           class: "inline-block w-5/12 py-1 px-3 font-body-philo bg-transparent border border-black border-opacity-25 italic text-lg rounded-full",
-          placeholder: "Trouver un mot"
+          placeholder: "Cherche un mot, sa définition..."
         %>
         <%= button_tag type: 'submit', class: "pl-1 -ml-10 text-lg" do %>
         <p>🔎</p>
@@ -22,7 +22,11 @@
       <ul class="overflow-auto h-40 pl-5 w-full">
         <% unless params[:query].present? && @words.count == 0 %>
           <% @words.each do |word| %>
-            <li class="font-body-philo text-gray-800 text-lg">• <%= link_to word.name , word_path(word) %></li>
+            <% unless @today.id < word.id %>
+              <li class="font-body-philo text-gray-800 text-lg">• <%= link_to word.name , word_path(word) %></li>
+            <% else %>
+              <li class="font-body-philo italic text-gray-800 text-lg">Oups, aucun mot ne correspond à ta requête !</li>
+            <% end %>
           <% end %>
         <% else %>
             <li class="font-body-philo italic text-gray-800 text-lg">Oups, aucun mot ne correspond à ta requête !</li>

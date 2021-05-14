@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :set_today, only: [:home]
+
   def home
     if params[:query].present?
       sql_query = " \
@@ -10,5 +12,12 @@ class PagesController < ApplicationController
     else
       @words = []
     end
+  end
+
+  private
+
+  def set_today
+    @now = Date.today
+    @today = Word.find_by(day: @now)
   end
 end

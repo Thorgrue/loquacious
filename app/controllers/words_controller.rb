@@ -11,7 +11,11 @@ class WordsController < ApplicationController
     year = 2021
     formated_date = "#{year}-#{month}-#{date}"
     @word = Word.find_by(day: formated_date)
-    redirect_to word_path(@word)
+    if @word == nil || @word.id > @today.id+1
+      redirect_to error_path
+    else
+      redirect_to word_path(@word)
+    end
   end
 
   def show
