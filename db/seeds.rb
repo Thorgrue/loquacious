@@ -4,60 +4,66 @@ puts 'Cleaning database...'
 
   Word.destroy_all
 
-puts 'Creating words...'
-
-  urls = [
-    # 0) arc-en-ciel
-      "https://cdn.europosters.eu/image/1300/wall-murals/modern-art-rainbow-416x254-cm-130g-m2-vlies-non-woven-i51875.jpg",
-    # 1) plante grasse
-      "https://images.unsplash.com/photo-1459664018906-085c36f472af?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80",
-    # 2) traces aquarelle
-      "https://cdn.pixabay.com/photo/2016/04/08/19/51/watercolor-1316867_1280.jpg",
-    # 3) écorce
-      "https://images.unsplash.com/photo-1519606247872-0440aae9b827?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    # 4) alcool
-      "https://s8v8k3v9.stackpathcdn.com/wp-content/uploads/2021/02/Alcohol-Ink-Texture-14-3.jpg",
-    # 5) tuiles
-      "https://cdn.pixabay.com/photo/2017/08/10/02/05/tiles-shapes-2617112_1280.jpg",
-    # 6) palmier
-      "https://images.unsplash.com/photo-1484506097116-1bcba4fa7568?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80",
-    # 7) plantes corail
-      "https://www.designcuts.com/wp-content/uploads/2020/07/Botanical-Seamless-Patterns-5.jpg",
-    # 8) marbré
-      "https://images.unsplash.com/photo-1496504175726-c7b4523c7e81?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80",
-    # 9) watercolor
-      "https://cdn.pixabay.com/photo/2016/08/18/14/25/watercolour-texture-1603104_1280.jpg",
-    # 10) plage
-      "https://images.unsplash.com/photo-1524946274118-e7680e33ccc5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
-    # 11) lemons
-      "https://wallpaperforu.com/wp-content/uploads/2020/07/yellow-aesthetic-wallpaper-20072002141919.jpg",
-    # 12) painted canva
-      "https://images.unsplash.com/photo-1523895665936-7bfe172b757d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
-    # 13) plantes aquarelle
-      "https://s8v8k3v9.stackpathcdn.com/wp-content/uploads/2020/07/Set-Of-Watercolor-Eucalyptus-Leaves-9.jpg",
-    # 14) formes abstraites
-      "https://s8v8k3v9.stackpathcdn.com/wp-content/uploads/2020/09/Risograph-for-Procreate-3-scaled.jpg",
-    # 15) tails aquarelle
-      "https://cutewallpaper.org/21/tumblr-background-watercolor/Watercolor-Pattern-at-GetDrawings.com-Free-for-personal-.jpg"
-          ]
-
 
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
-filepath    = 'words.csv'
+filepath1    = 'words.csv'
+filepath2    = 'urls.csv'
 
+puts 'Creating backgrounds...'
+urls = []
+
+CSV.foreach(filepath2, csv_options) do |row|
+  puts "- #{row['description']}..."
+  urls << row['url']
+end
+
+puts 'Creating words...'
 i = 0
-day = Date.new(2021, 05, 9)
+day = Date.new(2021, 05, 13)
 
-CSV.foreach(filepath, csv_options) do |row|
-  puts "#{row['name']}..."
+CSV.foreach(filepath1, csv_options) do |row|
+  puts "- #{row['name']}..."
   Word.create(name: row['name'], cat: row['cat'], definition: row['definition'], example: row['example'], url: urls[i], day: day)
-  i = i+1
+  i < 15 ? i = i+1 : i = 0
   day = day + 1.day
 end
 
 
 
-
+# urls = [
+#   # 0) arc-en-ciel
+#     "https://cdn.europosters.eu/image/1300/wall-murals/modern-art-rainbow-416x254-cm-130g-m2-vlies-non-woven-i51875.jpg",
+#   # 1) plante grasse
+#     "https://images.unsplash.com/photo-1459664018906-085c36f472af?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80",
+#   # 2) traces aquarelle
+#     "https://cdn.pixabay.com/photo/2016/04/08/19/51/watercolor-1316867_1280.jpg",
+#   # 3) écorce
+#     "https://images.unsplash.com/photo-1519606247872-0440aae9b827?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+#   # 4) alcool
+#     "https://s8v8k3v9.stackpathcdn.com/wp-content/uploads/2021/02/Alcohol-Ink-Texture-14-3.jpg",
+#   # 5) tuiles
+#     "https://cdn.pixabay.com/photo/2017/08/10/02/05/tiles-shapes-2617112_1280.jpg",
+#   # 6) palmier
+#     "https://images.unsplash.com/photo-1484506097116-1bcba4fa7568?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1650&q=80",
+#   # 7) plantes corail
+#     "https://www.designcuts.com/wp-content/uploads/2020/07/Botanical-Seamless-Patterns-5.jpg",
+#   # 8) marbré
+#     "https://images.unsplash.com/photo-1496504175726-c7b4523c7e81?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80",
+#   # 9) watercolor
+#     "https://cdn.pixabay.com/photo/2016/08/18/14/25/watercolour-texture-1603104_1280.jpg",
+#   # 10) plage
+#     "https://images.unsplash.com/photo-1524946274118-e7680e33ccc5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
+#   # 11) lemons
+#     "https://wallpaperforu.com/wp-content/uploads/2020/07/yellow-aesthetic-wallpaper-20072002141919.jpg",
+#   # 12) painted canva
+#     "https://images.unsplash.com/photo-1523895665936-7bfe172b757d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
+#   # 13) plantes aquarelle
+#     "https://s8v8k3v9.stackpathcdn.com/wp-content/uploads/2020/07/Set-Of-Watercolor-Eucalyptus-Leaves-9.jpg",
+#   # 14) formes abstraites
+#     "https://s8v8k3v9.stackpathcdn.com/wp-content/uploads/2020/09/Risograph-for-Procreate-3-scaled.jpg",
+#   # 15) tails aquarelle
+#     "https://cutewallpaper.org/21/tumblr-background-watercolor/Watercolor-Pattern-at-GetDrawings.com-Free-for-personal-.jpg"
+#         ]
 
 
 
