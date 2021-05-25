@@ -20,7 +20,14 @@ class WordsController < ApplicationController
 
   def show
     @words = Word.all
+    if params[:id] > @today.id
+      redirect_to error_path
+    else
     @word = Word.find(params[:id])
+
+    if @word == nil || @word.id > @today.id+1
+
+    end
     @previous_word = Word.where('id < ?', params[:id]).last
     @next_word = Word.where('id > ?', params[:id]).first
   end

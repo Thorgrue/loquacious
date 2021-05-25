@@ -13,16 +13,16 @@ puts 'Creating backgrounds...'
 urls = []
 
 CSV.foreach(filepath2, csv_options) do |row|
-  puts "- #{row['description']}..."
+  puts "- #{row['description']}"
   urls << row['url']
 end
 
 puts 'Creating words...'
 i = 0
-day = Date.new(2021, 05, 13)
+day = Date.new(2021, 05, 5)
 
 CSV.foreach(filepath1, csv_options) do |row|
-  puts "- #{row['name']}..."
+  puts "- #{row['name']}"
   Word.create(name: row['name'], cat: row['cat'], definition: row['definition'], example: row['example'], url: urls[i], day: day)
   i < 15 ? i = i+1 : i = 0
   day = day + 1.day
