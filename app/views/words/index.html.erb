@@ -9,20 +9,19 @@
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
   <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak class="relative z-0 flex h-full">
 
-    <!-- Flèche gauche -->
+    <!-- Flèche gauche (à partir de mai 2021) -->
     <div class="flex flex-wrap content-center h-full">
       <div class="z-50 lg:-mx-10 mt-6 flex flex-wrap content-end lg:content-center h-full">
         <button
           type="button"
           class="text-xl lg:text-5xl text-center flex"
-          :class="{'cursor-not-allowed opacity-25': month == 0 }"
-          :disabled="month == 0 ? true : false"
-          @click="month--; getNoOfDays()">
+          :class="{'cursor-not-allowed opacity-25': year == 2021 && month <= 4 }"
+          :disabled="year == 2021 && month <= 4 ? true : false"
+          @click="if(month == 0) {month=11;  year--} else {month--}; getNoOfDays()">
           <span>◀︎</span>
         </button>
       </div>
     </div>
-
 
     <!-- Actual calendar -->
     <div class="z-0 container mx-auto w-11/12 lg:w-2/3">
@@ -62,14 +61,14 @@
     </div>
 
 
-        <!-- Flèche droite -->
+        <!-- Flèche droite (jusque juin 2022) -->
       <div class="z-50 lg:-mx-10 mt-3 flex flex-wrap content-end lg:content-center h-full">
         <button
           type="button"
           class="text-xl lg:text-5xl text-center flex"
-          :class="{'cursor-not-allowed opacity-25': month == 11 }"
-          :disabled="month == 11 ? true : false"
-          @click="month++; getNoOfDays()">
+          :class="{'cursor-not-allowed opacity-25': year == 2022 && month >= 5 }"
+          :disabled="year == 2022 && month >= 5 ? true : false"
+          @click="if (month == 11) {month=0; year++} else {month++}; getNoOfDays()">
           <span>▶︎</span>
         </button>
       </div>
