@@ -9,6 +9,9 @@ module.exports = {
       },
       margin: {
        '0.5': '0.125rem',
+      },
+      screens: {
+        'xxs': '362px',
       }
     },
   },
