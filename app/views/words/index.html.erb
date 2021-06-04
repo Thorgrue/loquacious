@@ -43,7 +43,7 @@
         <template x-for="blankday in blankdays">
           <div
             style="width: 12.78%; height: 10.5vh"
-            class="text-center mx-0.5 mt-0.5 lg:mx-1 lg:mt-1"></div>
+            class="text-center mx-0.5 mt-0.5 lg:mt-1"></div>
         </template>
         <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
           <div
@@ -51,7 +51,7 @@
             class="m-0.5 bg-white relative flex items-center justify-center">
             <div
               x-text="date"
-              x-on:click="redirect(date, month)"
+              x-on:click="redirect(date, month, year)"
               class="inline-flex py-1 px-3 sm:px-6 lg:px-10 items-center justify-center cursor-pointer text-center leading-none transition ease-in-out duration-100"
               :class="{'bg-black text-white': isToday(date) == true, 'text-black hover:bg-gray-200': isToday(date) == false }"
             ></div>
@@ -146,9 +146,9 @@
           this.no_of_days = daysArray;
         },
 
-        redirect(date, month) {
-          console.log(date, month);
-          document.location.href=`/words/calendar?date=${date}&month=${month}`;
+        redirect(date, month, year) {
+          console.log(date, month, year);
+          document.location.href=`/words/${year}-${month + 1}-${date}`;
         }
       }
     }
