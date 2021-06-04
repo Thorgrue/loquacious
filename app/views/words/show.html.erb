@@ -38,6 +38,6 @@
      </div>
   </div>
 
-  <h1 class="text-2xl lg:text-4xl font-title-play text-center -mt-10 pt-4 lg:-mt-10 lg:pt-1"><%= @word.day.strftime("%d %B") %></h1>
+  <h1 class="text-2xl lg:text-4xl font-title-play text-center -mt-10 pt-4 lg:-mt-10 lg:pt-1"><%= l(@word.day, :format => '%d %B') %></h1>
 
 </div>
