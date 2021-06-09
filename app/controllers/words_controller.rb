@@ -21,7 +21,7 @@ class WordsController < ApplicationController
   def show
     @words = Word.all
     @word = Word.find_by(day: params[:day])
-    if @word.id > @today.id || params[:day].to_i < 2020
+    if @word.nil? || @word.id > @today.id
       redirect_to error_path
     else
       @word = Word.find_by(day: params[:day])
