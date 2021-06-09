@@ -6,7 +6,7 @@
       <div class="z-50 lg:-mx-10 mt-6 flex flex-wrap content-end lg:content-center h-full">
         <% unless @word == @words.first %>
           <div class="text-xl lg:text-5xl text-center flex">
-            <span><%= link_to "◀︎", word_path(@previous_word) %></span>
+            <span><%= link_to "◀︎", word_path(@previous_word.day) %></span>
           </div>
         <% end %>
       </div>
@@ -30,7 +30,7 @@
       <div class="z-50 mt-6 lg:-mx-10 flex flex-wrap content-end lg:content-center h-full">
         <% unless @word == @today %>
           <div class="text-xl lg:text-5xl">
-            <div><%= link_to "▶︎", word_path(@next_word) %></div>
+            <div><%= link_to "▶︎", word_path(@next_word.day) %></div>
           </div>
         <% end %>
       </div>

@@ -20,15 +20,14 @@ class WordsController < ApplicationController
 
   def show
     @words = Word.all
-    if params[:id].to_i > @today.id
+    @word = Word.find_by(day: params[:day])
+    if @word.id > @today.id || params[:day].to_i < 2020
       redirect_to error_path
-    elsif
-      @word = Word.find_by(day: params[:day])
     else
-      @word = @today
+      @word = Word.find_by(day: params[:day])
+      @previous_word = Word.where('id < ?', @word.id).last
+      @next_word = Word.where('id > ?', @word.id).first
     end
-    @previous_word = Word.where('id < ?', @word.id).last
-    @next_word = Word.where('id > ?', @word.id).first
   end
 
   private
