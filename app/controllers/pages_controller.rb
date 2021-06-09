@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :set_today, only: [:home]
 
   def home
+    @word = @today
     if params[:query].present?
       sql_query = " \
         words.name ILIKE :query \

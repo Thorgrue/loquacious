@@ -14,6 +14,9 @@ module.exports = {
         'xxs': '362px',
       }
     },
+    textColor: {
+      'cloudy': '#616d93',
+    },
   },
   variants: {
     extend: {},

@@ -22,8 +22,10 @@ class WordsController < ApplicationController
     @words = Word.all
     if params[:id].to_i > @today.id
       redirect_to error_path
-    else
+    elsif
       @word = Word.find_by(day: params[:day])
+    else
+      @word = @today
     end
     @previous_word = Word.where('id < ?', @word.id).last
     @next_word = Word.where('id > ?', @word.id).first
