@@ -24,7 +24,7 @@
         <% i = 0 %>
           <% @words.each do |word| %>
             <% if @today.id >= word.id %>
-              <li class="font-body-philo text-gray-800 text-lg">• <%= link_to word.name , word_path(@word.day) %></li>
+              <li class="font-body-philo text-gray-800 text-lg">• <%= link_to word.name , word_path(word.day) %></li>
               <% i += 1 %>
             <% elsif @today.id < word.id && i > 0 %>
               <% break %>

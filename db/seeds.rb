@@ -19,7 +19,7 @@ end
 
 puts 'Creating words...'
 i = 0
-day = Date.new(2021, 06, 5)
+day = Date.new(2021, 06, 05)
 
 CSV.foreach(filepath1, csv_options) do |row|
   puts "- #{row['name']}"
