@@ -30,7 +30,7 @@
       <!-- Name of days -->
       <div class="grid flex flex-wrap justify-evenly py-2 font-title-play">
         <template x-for="(day, index) in DAYS" :key="index">
-          <div style="width: 13.58%">
+          <div style="width: 13.48%">
             <div
               x-text="day"
               class="text-black text-sm lg:text-xl uppercase tracking-wide font-bold text-center"></div>
@@ -53,7 +53,7 @@
               x-text="date"
               x-on:click="redirect(date, month, year)"
               class="inline-flex py-1 px-3 sm:px-6 lg:px-10 items-center justify-center cursor-pointer text-center leading-none transition ease-in-out duration-100"
-              :class="{'bg-black text-white': isToday(date) == true, 'text-black hover:bg-gray-200': isToday(date) == false }"
+              :class="{'bg-pink-200 hover:bg-pink-400': isToday(date) == true, 'text-black hover:bg-gray-200': isToday(date) == false }"
             ></div>
           </div>
         </template>
