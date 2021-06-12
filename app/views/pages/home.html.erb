@@ -19,7 +19,7 @@
       <% end %></h1>
 
       <!-- Search bar results -->
-      <ul class="overflow-auto h-20 mb-3 md:h-40 lg:h-40 pl-5 w-full">
+      <ul class="overflow-auto h-20 mb-3 md:h-35 lg:h-35 pl-5 w-full">
         <% unless params[:query].present? && @words.count == 0 %>
         <% i = 0 %>
           <% @words.each do |word| %>
@@ -30,6 +30,7 @@
               <% break %>
             <% else %>
               <li class="font-body-philo italic text-gray-800 text-lg">Oups, aucun mot ne correspond à ta requête !</li>
+              <% break %>
             <% end %>
           <% end %>
         <% else %>
