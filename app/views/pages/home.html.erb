@@ -24,7 +24,7 @@
         <% i = 0 %>
           <% @words.each do |word| %>
             <% if @today.id >= word.id %>
-              <li class="font-body-philo text-gray-800 text-lg">• <%= link_to word.name , word_path(word.day) %></li>
+              <li class="font-body-philo text-gray-800 text-lg">• <%= link_to word.name , word_path(@word.day) %></li>
               <% i += 1 %>
             <% elsif @today.id < word.id && i > 0 %>
               <% break %>
@@ -37,8 +37,9 @@
         <% end %>
       </ul>
 
-    <div class="w-full mt-12">
-      <p class="tracking-widest text-center font-body-philo text-3xl text-gray-600 hover:text-black"><%= link_to "→ Mot du jour ←", word_path(@word.day) %></p>
+    <div class="w-full inline-block leading-none">
+      <p class="italic text-center font-body-philo text-2xl">Mot du jour</p>
+      <p class="tracking-widest text-center font-body-philo text-2xl hover:underline"><%= link_to "#{@word.name}", word_path(@word.day) %></p>
     </div>
 
     </div>
