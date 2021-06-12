@@ -9,7 +9,7 @@ class PagesController < ApplicationController
         OR words.definition ILIKE :query \
         OR words.example ILIKE :query \
       "
-      @words = Word.where(sql_query, query: "%#{params[:query]}%")
+      @words = Word.where(sql_query, query: "%#{params[:query]}%").order('id ASC')
     else
       @words = []
     end

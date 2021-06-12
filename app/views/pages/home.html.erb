@@ -22,7 +22,7 @@
       <ul class="overflow-auto h-20 mb-3 md:h-40 lg:h-40 pl-5 w-full">
         <% unless params[:query].present? && @words.count == 0 %>
         <% i = 0 %>
-          <% @words.order("id ASC").each do |word| %>
+          <% @words.each do |word| %>
             <% if @today.id >= word.id %>
               <li class="font-body-philo text-gray-800 text-lg">• <%= link_to word.name , word_path(@word.day) %></li>
               <% i += 1 %>
