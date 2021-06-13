@@ -3,6 +3,11 @@ class PagesController < ApplicationController
 
   def home
     @word = @today
+    @teasing = ""
+    (@word.name.length - 1).times do
+      @teasing = @teasing + '_'
+    end
+
     if params[:query].present?
       sql_query = " \
         words.name ILIKE :query \
