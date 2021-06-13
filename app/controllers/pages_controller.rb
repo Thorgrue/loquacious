@@ -3,7 +3,10 @@ class PagesController < ApplicationController
   before_action :set_visible_letters, only: [:home]
 
   def home
-
+    @teasing = "#{@today.name.slice(0..(@nb_now_letters - 1))}"
+    (@today.name.length - @nb_now_letters).times do
+      @teasing = @teasing + '_'
+    end
 
     if params[:query].present?
       sql_query = " \
