@@ -40,7 +40,7 @@
 
     <div class="w-full inline-block leading-none lg:mx-64">
       <p class="italic text-center font-body-philo text-2xl mb-1">Mot du jour</p>
-      <p class="rounded-full tracking-widest text-center font-body-philo p-1 md:mx-12 lg:mx-12 text-2xl hover:bg-gray-200 hover:shadow-md"><%= link_to "#{@word.name}", word_path(@word.day) %></p>
+      <p class="rounded-full tracking-widest text-center font-body-philo p-1 md:mx-12 lg:mx-12 text-2xl hover:bg-gray-200 hover:shadow-md"><%= link_to "#{@word.name.slice(0..3)}...", word_path(@word.day) %></p>
     </div>
 
     </div>
