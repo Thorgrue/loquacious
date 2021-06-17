@@ -28,7 +28,7 @@ class PagesController < ApplicationController
   end
 
   def set_visible_letters
-    @nb_max_letters = (@today.name.length - 1)*1/5
+    @nb_max_letters = (@today.name.length - 1)*1/2
     @interval = 12.0/@nb_max_letters
     @beginning_of_this_hour = Time.now.beginning_of_hour.to_s(:time).first(2).to_i
     if @beginning_of_this_hour > 8
