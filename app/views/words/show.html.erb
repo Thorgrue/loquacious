@@ -3,7 +3,7 @@
     <div class="flex flex-wrap content-center h-full">
 
       <!-- Flèche gauche -->
-      <div class="z-50 lg:-mx-10 mt-6 flex flex-wrap content-end lg:content-center h-full">
+      <div class="z-40 lg:-mx-10 mt-6 flex flex-wrap content-end lg:content-center h-full">
         <% unless @word == @words.first %>
           <div class="text-xl lg:text-5xl text-center flex">
             <span><%= link_to "◀︎", word_path(@previous_word.day) %></span>
@@ -27,7 +27,7 @@
       </div>
 
       <!-- Flèche droite -->
-      <div class="z-50 mt-6 lg:-mx-10 flex flex-wrap content-end lg:content-center h-full">
+      <div class="z-40 mt-6 lg:-mx-10 flex flex-wrap content-end lg:content-center h-full">
         <% unless @word == @today %>
           <div class="text-xl lg:text-5xl">
             <div><%= link_to "▶︎", word_path(@next_word.day) %></div>
@@ -38,6 +38,6 @@
      </div>
   </div>
 
-  <h1 class="text-2xl lg:text-4xl font-title-play text-center -mt-10 pt-4 lg:-mt-10 lg:pt-1"><%= link_to l(@word.day, :format => '%d %B'), words_path %></h1>
+  <h1 class="z-50 text-2xl lg:text-4xl font-title-play text-center -mt-10 pt-4 lg:-mt-10 lg:pt-1"><%= link_to l(@word.day, :format => '%d %B'), words_path %></h1>
 
 </div>
