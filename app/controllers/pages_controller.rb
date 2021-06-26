@@ -31,8 +31,10 @@ class PagesController < ApplicationController
     @nb_max_letters = (@today.name.length - 1)*1/2
     @interval = 12.0/@nb_max_letters
     @beginning_of_this_hour = Time.now.beginning_of_hour.to_s(:time).first(2).to_i
-    if @beginning_of_this_hour > 8
-      @nb_now_letters = ((@beginning_of_this_hour - 8)/@interval).round
+    if @beginning_of_this_hour >= 20
+      @nb_now_letters = @nb_max_letters
+    elsif @beginning_of_this_hour >= (8 + @interval)
+      @nb_now_letters = ((@beginning_of_this_hour - 8)/@interval).floor + 1
     else
       @nb_now_letters = 1
     end
